@@ -32,11 +32,15 @@
     </header>
     
 
-    
+<%
+=begin
+%>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
-    <div class="container">
+<%
+=end
+%>
+      <div class="container">
         <%= render 'layouts/flash_messages' %>
     
       <%= yield %>
