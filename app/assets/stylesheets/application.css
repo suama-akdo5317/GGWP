@@ -20,3 +20,7 @@
   font-family: 'Nixie One', cursive;
 }
 
+.container-login {
+  max-width: 576px;
+  padding: 2rem;
+}
