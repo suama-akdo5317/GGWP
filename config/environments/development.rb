@@ -58,14 +58,25 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
   # mail setting
+  
+  if Rails.application.credentials.gmail.present?
+    mail_address = Rails.application.credentials.gmail[:address]
+    password = Rails.application.credentials.gmail[:password]
+  else
+    mail_address = 'admin@example.com'
+    password = 'password'
+  end
+  
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => 587,
-    :user_name => "omochimasyumaro847@gmail.com",
-    :password => "rjscpnzoidmoebng",
+    :domain => 'gmail.com',
+    :user_name => mail_address,
+    :password => password,
     :authentication => :plain,
     :enable_starttls_auto => true
   }
