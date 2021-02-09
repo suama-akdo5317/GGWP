@@ -13,11 +13,10 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-
   end
   
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = '投稿しました'
       redirect_to root_url
@@ -39,7 +38,7 @@ class PostsController < ApplicationController
 
   private
 
-  def micropost_params
+  def post_params
     params.require(:post).permit(:title, :content, :image)
   end
   
