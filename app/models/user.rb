@@ -6,4 +6,7 @@ class User < ApplicationRecord
          :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
   has_many :posts
+  
+  has_one_attached :avatar
+
 end

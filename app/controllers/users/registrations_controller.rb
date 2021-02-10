@@ -15,9 +15,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+      if account_update_params[:avatar].present?
+        resource.avatar.attach(account_update_params[:avatar])    
+      end
+  end
 
   # PUT /resource
   # def update
