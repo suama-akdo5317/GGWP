@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
-    def show
-      @name = current_user.username
-    end
+  def show
+  end
   
 end
