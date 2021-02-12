@@ -4,4 +4,11 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :content, presence: true
 
+  has_many_attached :image
+  
+  def thumbnail input
+    return self.image[input].variant(resize: '300x300!').processed
+  end
+  
+  
 end

@@ -3,13 +3,15 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   
   def index
-    @users = User.order(id: :desc).page(params[:page]).per(25)
+    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts.order(id: :desc).page(params[:page])
-    counts(@user)
+    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
+
+    # @user = User.find(params[:user.id])
+    # @posts = @user.posts.order(id: :desc).page(params[:page])
+    # counts(@user)
   end
   
   def edit
@@ -32,6 +34,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @user.update(user_params)
   end
 
   def destroy
