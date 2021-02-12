@@ -9,12 +9,6 @@
       <%= f.text_area :content, class: 'form-control', rows: 10, :placeholder => "Enter your content..." %>
   </div>
   
-  <div class="form-group">
-    <%= form_with model: @post, local: true  do |form| %>
-    <%= form.file_field :image %>
-    <%= form.submit %>
-<% end %>
-  </div>
-  
+
       <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
  <% end %>
