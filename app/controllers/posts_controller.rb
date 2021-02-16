@@ -3,10 +3,11 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   
   def index
-    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
   end
 
   def show
+    @post = Post.find(params[:id])
+
     @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
 
     # @posts = @user.posts.order(id: :desc).page(params[:page])
