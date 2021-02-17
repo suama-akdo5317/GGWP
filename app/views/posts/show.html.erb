@@ -1,1 +1,8 @@
-<%= render 'post', posts: @posts %>
+ここに投稿の詳細
+
+進捗：<%= @post.title %><br>
+ワーク：<%= @post.content %>
+<br><br>
+<%= link_to "このワークを編集する", edit_post_path %>
+<%= link_to 'このワークを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to "一覧に戻る", root_url %>

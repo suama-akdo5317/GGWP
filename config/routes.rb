@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get 'users/show' => 'users#show'
   resources :users, only: [:show]
 
-
-
   resources :posts
+  get "posts/:id" => "posts#show"
   get 'posts/show'
   get 'posts/create'
   get 'posts/new'

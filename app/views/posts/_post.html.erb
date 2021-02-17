@@ -1,4 +1,29 @@
 <h1>投稿一覧</h1>
+<div class="row Masonry-3">
+  <% posts.each do |post| %>
+    <li class="media mb-4">
+      <div class="card">
+        <div>
+          ここに投稿画像
+        </div>
+        
+      <div class="card-body">
+        <h4 class="card-title"><%= link_to post.title, posts_show_path %></h4>
+      </div>
+        </div>
+    </li>
+  <% end %>
+  </div>
+
+  <%= paginate posts %>
+
+
+
+<%
+=begin
+%>
+
+<h1>投稿一覧</h1>
 <ul class="list-unstyled">
   <% posts.each do |post| %>
     <li class="media mb-3">
@@ -7,7 +32,7 @@
           <%= link_to post.user.username, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
         </div>
         <div>
-          <p class="mb-0"><%= post.title %></p>
+          <p class="mb-0"><%= link_to post.title, posts_show_path %></p>
         </div>
         <div>
           <p class="mb-0"><%= post.content %></p>
@@ -24,3 +49,7 @@
   <% end %>
   <%= paginate posts %>
 </ul>
+
+<%
+=end
+%>

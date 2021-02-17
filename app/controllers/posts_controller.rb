@@ -1,25 +1,15 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
-  end
-
-  def show
-    @post = Post.find(params[:id])
-
     @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
 
-    # @posts = @user.posts.order(id: :desc).page(params[:page])
-    # counts(@user)
   end
   
-  def edit
-  end
-  
-  def new
-    @post = Post.new
-  end
+    def new
+      @post = Post.new
+    end
   
   def create
     @post = current_user.posts.build(post_params)
@@ -32,9 +22,27 @@ class PostsController < ApplicationController
       render :new
     end
   end
+  
+
+  def show
+    @post = Post.find(params[:id])
+  end
+  
+  def edit
+  end
+  
+
 
   def update
-    @user.update(user_params)
+    @post.update(post_params)
+    if @post.save
+      flash[:success] = '更新されました'
+      redirect_to @post
+    else
+      @posts = current_user.posts.order(id: :desc).page(params[:page])
+      flash.now[:danger] = '更新失敗'
+      render :edit
+    end
   end
 
   def destroy
