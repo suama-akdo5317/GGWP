@@ -1,8 +1,22 @@
-ここに投稿の詳細
+<%= @post.user.username %>
+<br>
+作成日：<%= @post.created_at.strftime("%Y-%m-%d %H:%M") %>
+<br>
+更新日：<%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %>
 
-タイトル：<%= @post.title %><br>
-：<%= @post.content %>
+
+<br>
+title：<%= @post.title %><br>
+content：<%= @post.content %>
+<br>
+<% @post.image.each do |image|%>
+  <%= image_tag image.variant(resize: "500x500") %>
+<% end %>
+
 <br><br>
-<%= link_to "このワークを編集する", edit_post_path %>
-<%= link_to 'このワークを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to "このワークを編集する", edit_post_path %>
+  <%= link_to 'このワークを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<% end %>
+
 <%= link_to "一覧に戻る", root_url %>

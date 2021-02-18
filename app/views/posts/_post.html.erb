@@ -14,7 +14,7 @@
       </div>
       
       <div class="card-body">
-        <%= link_to post.user.username, user_path(:id) %> <span class="text-muted">posted at <%= post.created_at %></span>
+        <%= link_to post.user.username, user_path(:id) %> <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
       </div>
       
         </div>
