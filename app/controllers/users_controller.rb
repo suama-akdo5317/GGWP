@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:update]
+  before_action :set_user, only: [:show]
 
   def show
-    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
   end
   
   def update
     @user.update(user_params)
+  end
+  
+  private
+
+  def set_user
+    @user = User.find([:id])
   end
   
 end

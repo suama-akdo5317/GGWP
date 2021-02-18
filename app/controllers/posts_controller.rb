@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
-    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(12)
+    @posts = current_user.posts.order(id: :desc).page(params[:page]).per(9)
 
   end
   
