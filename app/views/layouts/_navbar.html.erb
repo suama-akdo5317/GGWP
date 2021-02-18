@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
           <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to '新規投稿',posts_new_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to '新規投稿',new_post_path, class: 'nav-link' %></li>
             <li class="nav-item"><strong><%= link_to current_user.username, users_show_path, class: 'nav-link' %></strong></li>
             <li class="nav-item"></li><%= link_to '投稿一覧' , posts_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to '会員情報変更',edit_user_registration_path, class: 'nav-link' %></li>

@@ -10,13 +10,6 @@ Rails.application.routes.draw do
 
 
   resources :posts
-  get "posts/:id" => "posts#show"
-  get 'posts/show'
-  get 'posts/create'
-  get 'posts/new'
-  get 'posts/edit'
-  get 'posts/create'
-  get 'posts/update'
-  get 'posts/destroy'
+
 
 end
