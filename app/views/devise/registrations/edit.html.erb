@@ -1,26 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-6">
-        <%# アバター未登録だとエラーが発声してしまうのか？　%>
-        <% #<%= image_tag @user.avatar) %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <div class="field">
-    <%= f.label :"クリックしてアバター変更", class: "image_input_btn" %>
-    <%= f.file_field :avatar, style:"display:none;", id:"upfile" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.update') %>
-  </div>
-<% end %>
-
-
+      編集だよ
     </div>
     <div class="col-6">
        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
-  # before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:mypage, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+
+  def index
+    @users = User.all
+  end
 
   def show
-    @user = User.find_by(id: params[:id])
-
     # counts(@user)
   end
+  
+  def mypage
+    redirect_to user_path(current_user)
+  end
+  
+  
   def edit
     unless @user == current_user
       redirect_to user_path(@user)
@@ -26,9 +34,12 @@ class UsersController < ApplicationController
   
   private
 
-=begin
   def set_user
-    p params[:user_id]
-    @user = User.find_by(id: params[:user_id])
-=end
+    @user = User.find_by(id: params[:id])
+  end
+  
+  def user_params
+    params.fetch(:user, {}).permit(:username)
+  end
+  
 end

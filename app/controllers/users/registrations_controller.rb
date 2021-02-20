@@ -15,12 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-    super
-      if account_update_params[:avatar].present?
-        resource.avatar.attach(account_update_params[:avatar])    
-      end
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
@@ -42,7 +39,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
-
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
