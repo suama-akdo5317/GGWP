@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   
   def index
     @posts = current_user.posts.order(id: :desc).page(params[:page]).per(9)
+    # @user = User.find_by(id: @post.user_id)
 
   end
   
