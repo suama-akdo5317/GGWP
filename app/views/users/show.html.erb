@@ -5,6 +5,11 @@
 <% end %>
 
 <h1><%= @user.username %></h1>
+<!-- 存在の確認 -->
+<% if @user.avatar.attached? %>
+  <!-- 表示 -->
+  <%= image_tag @user.avatar.variant(combine_options:{resize:"84x84^",crop:"84x84+0+0",gravity: :center}, strip: true).processed %>
+<% end %>
 
 
 
