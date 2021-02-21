@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # counts(@user)
+   #counts(@user)
   end
   
   def mypage
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
+    p "testです"
     params.fetch(:user, {}).permit(:username)
   end
   
