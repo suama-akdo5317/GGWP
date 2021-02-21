@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get '/mypage' => 'users#mypage'
 
 
-  resources :posts
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
   
   resources :relationships, only: [:create, :destroy]
 

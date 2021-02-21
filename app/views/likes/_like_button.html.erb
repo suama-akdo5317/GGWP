@@ -1,0 +1,27 @@
+<%
+=begin
+%>
+
+<% if current_user.already_liked?(@post) %>
+  <%= form_with(model: post_like_path(@post), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :like_id, user.id %>
+      <%= f.submit 'Unlike', class: 'btn btn-danger btn-block' %>
+    <% end %>
+  <% else %>
+
+    <%= form_with(model: post_likes_path(@post), local: true) do |f| %>
+      <%= hidden_field_tag :like_id, user.id %>
+      <%= f.submit 'like', class: 'btn btn-primary btn-block' %>
+    <% end %>
+
+<%
+=end
+%>    
+
+
+<% if current_user.already_liked?(@post) %>
+  <%= button_to 'いいねをやめる', post_like_path(@post), method: :delete, class: 'btn btn-danger btn-block' %>
+<% else %>
+  <%= button_to 'いいね', post_likes_path(@post), class: 'btn btn-primary btn-block' %>
+<% end %>
+

@@ -5,7 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
-  has_many :posts
+  has_many :posts # dependent: :destroyつけてない
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
+  
+  # すでにいいねしているかのメソッド
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'

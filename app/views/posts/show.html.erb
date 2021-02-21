@@ -13,10 +13,21 @@ content：<%= @post.content %>
   <%= image_tag image.variant(resize: "500x500") %>
 <% end %>
 
+<h3>いいね件数: <%= @post.likes.count %></h3>
+
+<h2>いいねしたユーザー</h2>
+<% @post.liked_users.each do |user| %>
+  <li><%= user.username %></li>
+<% end %>
+
+<%= render 'likes/like_button', like: @like %>
+
+
 <br><br>
 <% if user_signed_in? && current_user.id == @post.user_id %>
   <%= link_to "このワークを編集する", edit_post_path %>
   <%= link_to 'このワークを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
 <% end %>
+
 
 <%= link_to "一覧に戻る", root_url %>
