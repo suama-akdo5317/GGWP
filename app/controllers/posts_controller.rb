@@ -5,12 +5,19 @@ class PostsController < ApplicationController
   def index
     @posts = current_user.posts.order(id: :desc).page(params[:page]).per(9)
     # @user = User.find_by(id: @post.user_id)
-
   end
   
-    def new
-      @post = Post.new
-    end
+  def new
+    @post = Post.new
+  end
+    
+  def show
+    @post = Post.find_by(id: params[:id])
+    @like = Like.new
+
+    @comments = @post.comments
+    @comment = current_user.comments.new
+  end
   
   def create
     @post = current_user.posts.build(post_params)
@@ -22,12 +29,6 @@ class PostsController < ApplicationController
       flash.now[:danger] = '投稿に失敗しました'
       render :new
     end
-  end
-  
-
-  def show
-    @post = Post.find_by(id: params[:id])
-    @like = Like.new
   end
   
   def edit

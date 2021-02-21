@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
   has_many :posts # dependent: :destroyつけてない
+  has_many :comments
+
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
   
