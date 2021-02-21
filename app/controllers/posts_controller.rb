@@ -31,8 +31,6 @@ class PostsController < ApplicationController
   
   def edit
   end
-  
-
 
   def update
     @post.update(post_params)
@@ -50,6 +48,18 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
+  end
+
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
   end
 
   private

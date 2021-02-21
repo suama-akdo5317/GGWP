@@ -11,6 +11,7 @@
   <%= image_tag @user.avatar.variant(combine_options:{resize:"84x84^",crop:"84x84+0+0",gravity: :center}, strip: true).processed %>
 <% end %>
 
+<%= render 'relationships/follow_button', user: @user %>
 
 
 <% if user_signed_in? && @user == current_user %>

@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
     user_path(resource.id)
   end
 
-=begin これがあるとエラーになるよ  
   def counts(user)
-    @count_posts = user.post.count
+    @count_posts = user.posts.count
+    @count_followings = user.followings.count
+    @count_followers = user.followers.count
   end
-=end
 
 end
