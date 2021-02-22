@@ -24,3 +24,67 @@
   max-width: 576px;
   padding: 2rem;
 }
+
+.navbar {
+  height: 50px;
+  padding: 0;
+}
+.navbar {
+  height: 50px;
+  padding: 0;
+}
+.navbar ul {
+  /* flexboxでナビゲーションバーを横並び配置する */
+  display: flex;
+  /* 縦幅中央に配置する指定 */
+  align-items: center;
+  /* 横幅中央に配置する指定 */
+  justify-content: center;
+  width: 100%;
+  /* リストスタイルを削除 */
+  list-style: none;
+}
+.navbar ul li {
+  /* ナビゲーションメニュー同士の間隔を指定 */
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.nav-item a {
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  /* アニメーション速度を指定 */
+  transition: 0.3s ease-out;
+}
+.nav-item a:hover {
+  /* hover後の文字の太さを指定 */
+  font-weight: bold;
+}
+
+
+.jumbotron-extend {
+    position: relative;
+    height: 100vh;
+    min-height: 300px;
+    background: url(top.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+
+
+
+.site-name {
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+}
+.btn-black {
+    border-radius: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Avenir', serif;
+}
+.btn-black:hover {
+     background-color: #fff;
+     color: #000;
+}

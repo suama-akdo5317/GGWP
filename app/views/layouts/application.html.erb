@@ -22,19 +22,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nixie+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
-
   </head>
 
   <body>
+  <% if user_signed_in? %>
     <header>
       <%= render 'layouts/navbar' %>
     </header>
-    
     <div class="container-fluid">
       <%= render 'layouts/flash_messages' %>
-      <%= yield %>
+    </div>
+  <% end %>
+  
+  <% if user_signed_in? %>
+    <div class="container">
+        <%= yield %>
+    </div>
+      
+  <% else %>
+  <div class="jumbotron jumbotron-extend">
+    <div class="container-fluid jumbotron-container">
+      <div class="row">
+        <div class="col-8">
+          <h1 class="site-name">Dear Guiter</h1>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">CONTACT ME</a></p>
+        </div>
+      <div class="col-4">
+        <%= render 'toppages/login' %>
+        <%= render 'layouts/flash_messages' %>
+      </div>
+    </div>
+    </div>
+    
     </div>
 
+  </div>
 
+  
+  <% end %>
   </body>
 </html>
