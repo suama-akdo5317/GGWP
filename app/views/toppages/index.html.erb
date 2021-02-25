@@ -1,4 +1,24 @@
-<%= render 'layouts/flash_messages' %>
+  <% if user_signed_in? %>
+      
+  <% else %>
+    <div class="jumbotron jumbotron-extend">
+      <div class="container-fluid jumbotron-container">
+        <div class="row">
+          <div class="col-8">
+            <h1 class="site-name">Dear Guiter</h1>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">CONTACT ME</a></p>
+          </div>
+              <div class="col-4">
+                <%= render 'toppages/login' %>
+                <%= render 'layouts/flash_messages' %>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+
 
   <h2>TOPIC</h2>
   <%= render 'posts/post', posts: @posts %>

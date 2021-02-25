@@ -63,3 +63,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'aws-sdk-s3', require: false
+
+gem 'image_processing', '~> 1.2'

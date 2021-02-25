@@ -12,8 +12,8 @@
 <%= form_with model: @user do |f| %>
 
   <div class="field">
-    <%= f.label :"クリックしてアバター変更", class: "image_input_btn" %>
-    <%= f.file_field :avatar, id:"upfile" %>
+<%= f.file_field :avatar %>
+
     
     <% #既に画像設定されている場合は、その内容を削除します %>
       <% if @user.avatar.attached? %>
@@ -23,5 +23,6 @@
   </div>
 
   <div>username<%= f.text_field :username %></div>
-  <div><%= f.submit "保存" %></div>
-<% end %>
+<div class="actions">
+    <%= f.submit "Update" %>
+</div><% end %>
