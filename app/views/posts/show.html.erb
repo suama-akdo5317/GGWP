@@ -32,6 +32,7 @@ content：<%= @post.content %>
     </div>
     <br />
   <% end %>
+  
   <% if user_signed_in? %>
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
       <%= f.text_area :content, class: "form-control", rows: 5 %>
@@ -55,8 +56,8 @@ content：<%= @post.content %>
 
 <br><br>
 <% if user_signed_in? && current_user.id == @post.user_id %>
-  <%= link_to "このワークを編集する", edit_post_path %>
-  <%= link_to 'このワークを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+  <%= link_to "この投稿を編集する", edit_post_path %>
+  <%= link_to 'この投稿を削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
 <% end %>
 
 
