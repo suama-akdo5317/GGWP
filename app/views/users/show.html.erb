@@ -4,11 +4,12 @@
   <h1>ユーザーページ</h1>
 <% end %>
 
-<h1><%= @user.username %></h1>
-<!-- 存在の確認 -->
 <% if @user.avatar.attached? %>
-  <!-- 表示 -->
-  <%= image_tag @user.avatar.variant(combine_options:{resize:"84x84^",crop:"84x84+0+0",gravity: :center}, strip: true).processed %>
+# 画像が登録されている場合の処理
+ <p><%= image_tag(rails_blob_path(@user.avatar),:size => "100x100") %></p>
+<% else %>
+# 画像が登録されていない場合の処理
+ <p><%= image_tag("nonavatar.jpg", :size => "100x100") %></p>
 <% end %>
 
 <%= render 'relationships/follow_button', user: @user %>

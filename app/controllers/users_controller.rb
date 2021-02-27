@@ -23,7 +23,10 @@ class UsersController < ApplicationController
   
   
   def update
-    # @user.update(user_params)
+    current_user.update(update_params)
+
+    @user.update(user_params)
+
     if current_user.update(user_params)
       redirect_to user_path(current_user)
     else
@@ -39,8 +42,11 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    p "testです"
-    params.fetch(:user, {}).permit(:username)
+    params.fetch(:user, {}).permit(:username, :avatar)
+  end
+  
+  def update_params
+   params.require(:user).permit(:avatar)
   end
   
 end

@@ -39,7 +39,8 @@
   /* 縦幅中央に配置する指定 */
   align-items: center;
   /* 横幅中央に配置する指定 */
-  justify-content: center;
+  /*justify-content: center; */
+  
   width: 100%;
   /* リストスタイルを削除 */
   list-style: none;
@@ -78,6 +79,11 @@
     margin-bottom: 40px;
     font-family: 'Playfair Display', serif;
 }
+.site-introduction {
+    font-family: "Sawarabi Mincho"; 
+}
+
+
 .btn-black {
     border-radius: 0;
     background-color: #000;

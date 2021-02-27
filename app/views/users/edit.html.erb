@@ -1,28 +1,32 @@
 <h1>プロフィール編集</h1>
 
+
+
 <h1><%= @user.username %></h1>
-<!-- 存在の確認 -->
+
+
 <% if @user.avatar.attached? %>
-  <!-- 表示 -->
-  <%= image_tag @user.avatar.variant(combine_options:{resize:"84x84^",crop:"84x84+0+0",gravity: :center}, strip: true).processed %>
+# 画像が登録されている場合の処理
+ <p><%= image_tag(rails_blob_path(@user.avatar),:size => "100x100") %></p>
+<% else %>
+# 画像が登録されていない場合の処理
+ <p><%= image_tag("nonavatar.jpg", :size => "100x100") %></p>
 <% end %>
 
-  <% #  <%= image_tag @user.avatar) %>
 
 <%= form_with model: @user do |f| %>
 
   <div class="field">
-<%= f.file_field :avatar %>
-
-    
+    <%= f.file_field :avatar %>
     <% #既に画像設定されている場合は、その内容を削除します %>
       <% if @user.avatar.attached? %>
         <% @user.avatar.purge %>
       <% end %>
-    
   </div>
 
   <div>username<%= f.text_field :username %></div>
-<div class="actions">
-    <%= f.submit "Update" %>
-</div><% end %>
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+    
+<% end %>
