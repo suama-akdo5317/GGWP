@@ -4,11 +4,9 @@
     <li class="media mb-4">
       <div class="card">
         <% if post.image.attached? %>
-          <% post.image.each do |image|%>
-            <%= image_tag image.variant(resize: "300x300") %>
+            <%= image_tag post.image.first.variant(resize: "300x300") %>
         <% else %>
           <%= image_tag("noimage.png", :size => "300x300") %>
-          <% end %>
         <% end %>
 
       <div class="card-body">

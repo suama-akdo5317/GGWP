@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @like = Like.new
-
     @comments = @post.comments
     @comment = current_user.comments.new
   end
