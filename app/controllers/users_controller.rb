@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-   #counts(@user)
+   # counts(@user)
   end
   
   def mypage
@@ -25,14 +25,6 @@ class UsersController < ApplicationController
   def update
     current_user.update(update_params)
 
-    @user.update(user_params)
-
-    if current_user.update(user_params)
-      redirect_to user_path(current_user)
-    else
-      redirect_to edit_user_path(current_user)
-    end
-    
   end
   
   private
