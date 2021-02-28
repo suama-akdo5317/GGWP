@@ -72,18 +72,6 @@
     background-size: cover;
 }
 
-
-
-
-.site-name {
-    margin-bottom: 40px;
-    font-family: 'Playfair Display', serif;
-}
-.site-introduction {
-    font-family: "Sawarabi Mincho"; 
-}
-
-
 .btn-black {
     border-radius: 0;
     background-color: #000;
@@ -93,4 +81,8 @@
 .btn-black:hover {
      background-color: #fff;
      color: #000;
+}
+
+.pagenate{
+  text-align:center;
 }

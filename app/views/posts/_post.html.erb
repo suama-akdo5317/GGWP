@@ -3,12 +3,14 @@
   <% posts.each do |post| %>
     <li class="media mb-4">
       <div class="card">
-        <div>
-            <% post.image.each do |image|%>
-              <%= image_tag image.variant(resize: "300x300") %>
-            <% end %>
-        </div>
-        
+        <% if post.image.attached? %>
+          <% post.image.each do |image|%>
+            <%= image_tag image.variant(resize: "300x300") %>
+        <% else %>
+          <%= image_tag("noimage.png", :size => "50x50") %>
+          <% end %>
+        <% end %>
+
       <div class="card-body">
         <h4 class="card-title"><%= link_to post.title, post_path(post.id) %></h4>
       </div>
@@ -22,52 +24,19 @@
         <%= link_to post.user.username, user_path(post.user.id) %> <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
       </div>
       
-      <div>いいね数: <%= post.likes.count %>
+      <div>
+        <i class="far fa-heart"></i><%= post.likes.count %>
+        <i class="far fa-comment-dots"></i><%= post.comments.count %>
       </div>
-      
-      <div>リプライ数: <%= post.comments.count %>
-      </div>
+
       
         </div>
     </li>
   <% end %>
   </div>
+  
+  <div class="pagenate">
+    <%= paginate posts %>
+  </div>
 
-  <%= paginate posts %>
 
-
-
-<%
-=begin
-%>
-
-<h1>投稿一覧</h1>
-<ul class="list-unstyled">
-  <% posts.each do |post| %>
-    <li class="media mb-3">
-      <div class="media-body">
-        <div>
-          <%= link_to post.user.username, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
-        </div>
-        <div>
-          <p class="mb-0"><%= link_to post.title, posts_show_path %></p>
-        </div>
-        <div>
-          <p class="mb-0"><%= post.content %></p>
-        </div>
-        <div>
-          <% if current_user == post.user %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-        </div>
-        
-
-        </div>
-    </li>
-  <% end %>
-  <%= paginate posts %>
-</ul>
-
-<%
-=end
-%>

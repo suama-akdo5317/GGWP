@@ -7,7 +7,14 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <% if user_signed_in? %><li class="nav-item"><%= link_to '新規投稿',new_post_path, class: 'nav-link' %></li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-info btn-sm"><%= link_to new_post_path do %><i class="far fa-edit"></i>
+            <span>投稿</span>
+            <% end %>
+            </button>
+          </li>
+          
           <li class="nav-item">
           <% if current_user.avatar.attached? %>
             <%= image_tag(rails_blob_path(current_user.avatar),:size => "50x50") %>

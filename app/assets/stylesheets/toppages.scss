@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-
+.site-name {
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+}
+.site-introduction {
+    font-family: "Sawarabi Mincho"; 
+}
 
 .row.Masonry-2 {
     column-count: 2;

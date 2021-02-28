@@ -1,29 +1,25 @@
   <% if user_signed_in? %>
-      
+    <%= render 'posts/post', posts: @posts %>
+
   <% else %>
     <div class="jumbotron jumbotron-extend">
       <div class="container-fluid jumbotron-container">
         <div class="row">
           <div class="col-8">
             <h2 class="site-name">Save the NewPlayers.</h2>
-            <div class="site-slogan">1年以内に辞めてしまう90%の人々を救いましょう</div>
-            <div class="site-introduction">GGWPは練習を記録したりアドバイスをもらったりするサイトです</div>
-            
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">投稿を見る</a></p>
+            <div class="site-introduction">
+              Fender社CEOによると90%のNewPlayersが1年以内に弾かなくなってしまいます<p>GGWPは練習を記録したりアドバイスをもらったりするサイトです</p>
+            </div>
           </div>
-              <div class="col-4">
-                <%= render 'toppages/login' %>
-                <%= render 'layouts/flash_messages' %>
-                </div>
-              </div>
+            <div class="col-4">
+              <%= render 'toppages/login' %>
+              <%= render 'layouts/flash_messages' %>
+            </div>
+        </div>
       </div>
     </div>
   </div>
   <% end %>
 
-
-
-  <h2>TOPIC</h2>
-  <%= render 'posts/post', posts: @posts %>
 
 </div>

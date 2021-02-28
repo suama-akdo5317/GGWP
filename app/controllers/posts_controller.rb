@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @like = Like.new
 
-  
     @comments = @post.comments
     @comment = current_user.comments.new
   end
@@ -49,7 +48,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = '投稿を削除しました。'
     redirect_back(fallback_location: root_path)
   end
 
