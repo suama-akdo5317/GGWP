@@ -23,7 +23,14 @@ class UsersController < ApplicationController
   
   
   def update
-    current_user.update(update_params)
+      @user.update(update_params)
+    if @user.save
+      flash[:success] = '更新されました'
+      redirect_to @user
+    else
+      flash.now[:danger] = '更新失敗'
+      render :edit
+    end
 
   end
   
@@ -38,7 +45,7 @@ class UsersController < ApplicationController
   end
   
   def update_params
-   params.require(:user).permit(:avatar)
+   params.require(:user).permit(:username, :avatar)
   end
   
 end

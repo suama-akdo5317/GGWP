@@ -15,6 +15,10 @@
  */
 
 
+body {
+font-family: 'Noto Sans JP', sans-serif;
+}
+
 .navbar-brand {
   font-size:40px;
   font-family: 'Nixie One', cursive;
@@ -29,10 +33,7 @@
   height: 50px;
   padding: 0;
 }
-.navbar {
-  height: 50px;
-  padding: 0;
-}
+
 .navbar ul {
   /* flexboxでナビゲーションバーを横並び配置する */
   display: flex;
@@ -86,3 +87,11 @@
 .pagenate{
   text-align:center;
 }
+
+.avatar{
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  }
