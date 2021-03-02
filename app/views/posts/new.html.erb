@@ -1,6 +1,7 @@
 <h1>新規投稿画面</h1>
 
 <%= form_with(model: @post, local: true) do |f| %>
+
   <div class="form-group">
     <%= f.text_area :title, class: 'form-control', rows: 1, :placeholder => "Enter your title..." %>
   </div>
