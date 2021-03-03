@@ -1,38 +1,43 @@
-<h1>TOPIC</h1>
-  <% posts.each do |post| %>
-    <li class="media mb-2">
-      <div class="card">
-        <% if post.image.attached? %>
-            <%= image_tag post.image.first.variant(resize: "300x300") %>
-        <% else %>
-          <%= image_tag("noimage.png", :size => "300x300") %>
-        <% end %>
+<h2>TOPIC</h2>
+    
+<div class="container py-4" id="works">
+  <div class="row">
+    <% posts.each do |post| %>
+      <div class="col-sm-4 col-xs-6">
 
-      <div class="card-body">
-        <h4 class="card-title"><%= link_to post.title, post_path(post.id) %></h4>
-      </div>
-      
-      <div class="card-body avatar">
-        <% if post.user.avatar.attached? %>
-          <%= image_tag(rails_blob_path(post.user.avatar),:size => "50x50") %>
-        <% else %>
-          <%= image_tag("nonavatar.jpg", :size => "50x50") %>
-        <% end %>
-        <%= link_to post.user.username, user_path(post.user.id) %> <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-      </div>
-      
-      <div>
-        <i class="far fa-heart"></i><%= post.likes.count %>
-        <i class="far fa-comment-dots"></i><%= post.comments.count %>
-      </div>
-
-      
+        <div class="card">
+          <% if post.user.avatar.attached? %>
+            <%= image_tag(rails_blob_path(post.user.avatar),:size => "50x50") %>
+          <% else %>
+            <%= image_tag("nonavatar.jpg", :size => "50x50") %>
+          <% end %>
+            <span><small class="text-muted">
+              <%= link_to post.user.username, user_path(post.user.id) %> 
+            </small>
+            </span>
+          <% if post.image.attached? %>
+            <%= image_tag post.image.first, :size => "250x250" %>
+          <% else %>
+            <%= image_tag("noimage.png", :size => "250x250") %>
+          <% end %>
+          
+            <div class="card-body">
+              <h3><%= link_to post.title, post_path(post.id) %></h3>
+              <p class="card-text">
+                  <i class="far fa-heart"></i><%= post.likes.count %>
+                  <i class="far fa-comment-dots"></i><%= post.comments.count %>
+                <small class="text-muted">
+                  <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+                </small>
+              </p>
+            </div>
+            
         </div>
-    </li>
-  <% end %>
-
-  <div class="pagenate">
-    <%= paginate posts %>
+  
+  
+      </div>
+    <% end %>
   </div>
+</div>
 
-
+    <%= paginate posts %>

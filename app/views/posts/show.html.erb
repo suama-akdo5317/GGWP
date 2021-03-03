@@ -1,24 +1,29 @@
 <div class="row">
   <div class="col-2">
+    <%= render 'likes/like_button', like: @like %>
+    <br>
     <h3><i class="far fa-heart"></i><%= @post.likes.count %></h3>
     <% # いいねしたユーザーを表示する %>
     <% @post.liked_users.each do |user| %>
       <li><%= link_to user.username, user_path(user.id) %></li>
     <% end %>
-    <%= render 'likes/like_button', like: @like %>
   </div>
   
   <div class="col-10">
-    <%= @post.user.username %>
-
-
+    <% if @post.user.avatar.attached? %>
+        <%= image_tag(rails_blob_path(@post.user.avatar),:size => "50x50") %>
+      <% else %>
+        <%= image_tag("nonavatar.jpg", :size => "50x50") %>
+      <% end %>
+    <span><%=link_to @post.user.username,user_path(@post.user.id) %></span>
+    
 <br>
 <%= "作成日： #{@post.created_at.strftime("%Y-%m-%d %H:%M")}" %> <%= "更新日：#{@post.updated_at.strftime("%Y-%m-%d %H:%M")}" %>
 
 
 <br>
-title：<%= @post.title %><br>
-content：<%= simple_format(@post.content) %>
+<h2>title：<%= @post.title %></h2>
+<h4>content：<%= simple_format(@post.content) %></h4>
 <br>
 <% @post.image.each do |image|%>
   <%= image_tag image.variant(resize: "500x500") %>

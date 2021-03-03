@@ -6,6 +6,15 @@ class User < ApplicationRecord
          :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
   validates :username, presence: true
+  
+  # ゲストログイン用
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now
+      user.username = "Guest"
+    end
+  end
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
