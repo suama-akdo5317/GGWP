@@ -1,20 +1,69 @@
 <% if user_signed_in? && @user == current_user %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1>ユーザーページ</h1>
-<% end %>
-
-<% if @user.avatar.attached? %>
-# 画像が登録されている場合の処理
- <p><%= image_tag(rails_blob_path(@user.avatar),:size => "100x100") %></p>
-<% else %>
-# 画像が登録されていない場合の処理
- <p><%= image_tag("nonavatar.jpg", :size => "100x100") %></p>
-<% end %>
-
-<%= render 'relationships/follow_button', user: @user %>
-
-
-<% if user_signed_in? && @user == current_user %>
+  <h2>マイページ</h2>
+  ※あなただけのページです
+  <% if user_signed_in? && @user == current_user %>
  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
 <% end %>
+
+<% else %>
+  <h2>ユーザーページ</h2>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 left" style="background-color:red;">
+      <h3><%= @user.username %></h3>
+      
+      <div class="avatar">
+      <% if @user.avatar.attached? %>
+        # 画像が登録されている場合の処理
+        <p><%= image_tag(rails_blob_path(@user.avatar),:size => "100x100") %></p>
+      <% else %>
+        <p><%= image_tag("nonavatar.jpg", :size => "100x100") %></p>
+        </div>
+        <p>※アバターが登録されていません</p>
+         
+      <% end %>
+      <%= render 'relationships/follow_button', user: @user %>
+
+    </div>
+    
+    <div class="col-sm-6" style="background-color:gray;">
+      <div>
+        <%= simple_format(@user.introduction) %>
+      </div>
+
+
+
+<div>
+  <%= @user.how_long %>
+</div>
+
+<div>
+  <%= @user.my_guiter_brand %>
+</div>
+
+<div>
+  <%= @user.my_guiter_model %>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,11 +41,11 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.fetch(:user, {}).permit(:username, :avatar)
+    params.fetch(:user, {}).permit(:username, :avatar, :introduction, :how_long, :my_guiter_brand, :my_guiter_model)
   end
   
   def update_params
-   params.require(:user).permit(:username, :avatar)
+   params.require(:user).permit(:username, :avatar, :introduction, :how_long, :my_guiter_brand, :my_guiter_model)
   end
   
 end

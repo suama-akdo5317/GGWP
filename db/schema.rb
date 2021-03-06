@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_101119) do
+ActiveRecord::Schema.define(version: 2021_03_04_162835) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2021_02_21_101119) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.text "image"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,6 +95,10 @@ ActiveRecord::Schema.define(version: 2021_02_21_101119) do
     t.string "uid"
     t.string "username"
     t.string "avatar"
+    t.text "introduction"
+    t.string "how_long"
+    t.string "my_guiter_brand"
+    t.string "my_guiter_model"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
