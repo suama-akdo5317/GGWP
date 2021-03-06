@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-   # counts(@user)
+   counts(@user)
+   @posts = @user.posts.order(id: :desc).page(params[:page])
+
   end
   
   def mypage
@@ -31,7 +33,18 @@ class UsersController < ApplicationController
       flash.now[:danger] = '更新失敗'
       render :edit
     end
-
+  end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
   end
   
   private

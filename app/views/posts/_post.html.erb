@@ -4,11 +4,11 @@
   <div class="row">
     <% posts.each do |post| %>
       <div class="col-sm-4 col-xs-6">
-        <div class="card mt-1 mb-3 style="width: 18rem;">
+        <div class="card mt-1 mb-3" style="width: 18rem;">
           <% if post.user.avatar.attached? %>
-            <%= image_tag(rails_blob_path(post.user.avatar),:size => "50x50") %>
+            <p class="avatar"><%= link_to image_tag(rails_blob_path(post.user.avatar),:size => "50x50"),user_path(post.user.id) %></p>
           <% else %>
-            <%= image_tag("nonavatar.jpg", :size => "50x50") %>
+            <p class="avatar"><%= link_to image_tag("nonavatar.jpg", :size => "50x50"),user_path(post.user.id) %></p>
           <% end %>
             <span>
               <small class="text-muted">

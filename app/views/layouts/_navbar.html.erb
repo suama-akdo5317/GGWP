@@ -18,7 +18,7 @@
           
           <li class="nav-item">
           <% if current_user.avatar.attached? %>
-            <%= link_to image_tag(rails_blob_path(current_user.avatar),:size => "50x50", class: 'nav-link avatar'), user_path(current_user.id)  %>
+            <%= link_to image_tag(rails_blob_path(current_user.avatar),:size => "50x50", class: 'nav-link'), user_path(current_user.id) %>
           <% else %>
             <%= link_to image_tag("nonavatar.jpg", :size => "50x50", class: 'nav-link'), user_path(current_user.id) %>
           <% end %>

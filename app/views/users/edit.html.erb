@@ -3,12 +3,7 @@
     <h3 class="mt-1 mb-3">プロフィール編集</h3>
     <div class="container-fluid">
       <h1><%= @user.username %></h5>
-        <% if @user.avatar.attached? %>
-          <p><%= image_tag(rails_blob_path(@user.avatar),:size => "100x100") %></p>
-        <% else %>
-          <p><%= image_tag("nonavatar.jpg", :size => "100x100") %></p>
-        <% end %>
-
+      <%= render 'layouts/avatar', user: @user %>
       <%= form_with model: @user do |f| %>
       <div class="form-group">
         <%= f.file_field :avatar %>

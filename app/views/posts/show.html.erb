@@ -10,11 +10,7 @@
   </div>
   
   <div class="col-10">
-    <% if @post.user.avatar.attached? %>
-        <%= image_tag(rails_blob_path(@post.user.avatar),:size => "50x50") %>
-      <% else %>
-        <%= image_tag("nonavatar.jpg", :size => "50x50") %>
-      <% end %>
+
     <span><%=link_to @post.user.username,user_path(@post.user.id) %></span>
     
 <br>
