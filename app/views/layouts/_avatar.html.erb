@@ -1,5 +1,5 @@
 <% if user.avatar.attached? %>
- <p class="avatar"><%= image_tag(rails_blob_path(user.avatar),:size => "100x100") %></p>
+ <p class="avatar"><%= image_tag(rails_blob_path(user.avatar),:size => "50x50") %></p>
 <% else %>
- <p class="avatar"><%= image_tag("nonavatar.jpg", :size => "80x80") %></p>
+ <p class="avatar"><%= image_tag("nonavatar.jpg", :size => "50x50") %></p>
 <% end %>

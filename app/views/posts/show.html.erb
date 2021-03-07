@@ -10,56 +10,56 @@
   </div>
   
   <div class="col-10">
+  <%=link_to @post.user.username,user_path(@post.user.id) %>
+  <small class="text-muted">
+    <span class="text-muted"><%= "作成日: #{@post.created_at.strftime("%Y-%m-%d %H:%M")}" "更新日: #{@post.updated_at.strftime("%Y-%m-%d %H:%M")}" %></span>
+  </small>
 
-    <span><%=link_to @post.user.username,user_path(@post.user.id) %></span>
-    
-<br>
-<%= "作成日： #{@post.created_at.strftime("%Y-%m-%d %H:%M")}" %> <%= "更新日：#{@post.updated_at.strftime("%Y-%m-%d %H:%M")}" %>
-
-
-<br>
-<h2>title：<%= @post.title %></h2>
-<h4>content：<%= simple_format(@post.content) %></h4>
-<br>
-<% @post.image.each do |image|%>
-  <%= image_tag image.variant(resize: "500x500") %>
-<% end %>
+    <div class="card">
+      <h2 class="card-header">
+        <%= @post.title %>
+      </h2>
+      <div class="card-body">
+        <%= simple_format(@post.content) %>
+        <% @post.image.each do |image|%>
+          <%= image_tag image.variant(resize: "500x500") %>
+        <% end %>
+        <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url[32..42] %>" width="560"></iframe>
+      </div>
+    </div>
 
 <div class="comment-wrapper border-top　mb-10">
-  <h2 class="mt-5"><i class="far fa-comment-dots"></i><%= @post.comments.count %></h2>
+  <h2 class="mt-5"><i class="far fa-comment-dots"></i>
+    <%= @post.comments.count %>
+  </h2>
   
-  
-<% @comments.each do |c| %>
-  <div class="card">
-    <% unless c.user.blank? %>
-      <h5 class="card-header">
-        <% if c.user.avatar.attached? %>
-          <%= image_tag(rails_blob_path(c.user.avatar),:size => "50x50") %>
-        <% else %>
-          <%= image_tag("nonavatar.jpg", :size => "50x50") %>
-        <% end %>
+  <% @comments.each do |c| %>
+    <div class="card">
+      <% unless c.user.blank? %>
+        <h5 class="card-header">
+          <% if c.user.avatar.attached? %>
+            <div class="avatar"><%= image_tag(rails_blob_path(c.user.avatar),:size => "50x50") %></div>
+          <% else %>
+            <div class="avatar"><%= image_tag("nonavatar.jpg", :size => "50x50") %></div>
+          <% end %>
         <%= link_to c.user.username, user_path(c.user.id) %>
+        <small class="text-muted">posted at <%= c.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+          <% if current_user == c.user %>
+            <%= link_to "Delete", post_comment_path(@post, c), method: :delete, data: { confirm: "コメントを削除しますか?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
       </h5>
-
       <div class="card-body">
         <%= simple_format(c.content) %>
       </div>
-      
-    <div class="card-footer text-muted">
-      posted at <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
-      <% if current_user == c.user %>
-        <%= link_to "Delete", post_comment_path(@post, c), method: :delete, data: { confirm: "コメントを削除しますか?" }, class: 'btn btn-danger btn-sm' %>
       <% end %>
     </div>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
 
-
+<br>
   <% if user_signed_in? %>
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
-      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+      <%= f.text_area :content, class: "form-control", rows: 5, required: true %>
+      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do  %>
         <i class="far fa-comments"></i> コメントする
       <% end %>
     <% end %>

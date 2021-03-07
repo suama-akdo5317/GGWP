@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark p-1" style="background-color:black;">
+  <nav class="navbar navbar-expand-sm navbar-light p-1" style="background-color:light;">
     <a class="navbar-brand" href="/">GGWP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -9,9 +9,7 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-info btn-sm"><%= link_to new_post_path do %><i class="far fa-edit"></i>
-            <span>投稿</span>
-            <% end %>
+            <button type="button" class="btn btn-outline-info btn-sm mt-1"><%= link_to new_post_path do %><i class="far fa-edit"></i>投稿<% end %>
             </button>
           </li>
           
