@@ -1,40 +1,38 @@
 <% if user_signed_in? && @user == current_user %>
   <h2>マイページ</h2>
-  ※あなただけのページです
-  <% if user_signed_in? && @user == current_user %>
- <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-<% end %>
-
 <% else %>
   <h2>ユーザーページ</h2>
 <% end %>
 
 <div class="container-container">
   <div class="row">
-    <div class="col-sm-3 left" style="background-color:red;">
+    <div class="col-sm-3 left" style="background-color:#e6e6fa;">
       <h3><%= @user.username %></h3>
 
       <%= render 'layouts/avatar', user: @user %>
+        <% if user_signed_in? && @user == current_user %>
+          <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
+        <% end %>
       <%= render 'relationships/follow_button', user: @user %>
     </div>
     
-    <div class="col-sm-9" style="background-color:gray;">
-      <div>
+    <div class="col-sm-9" style="background-color:#e6e6fa;">
+      <h4 style="color: blue;">
         投稿：<%= @count_posts %>
         フォロー中：<%= @count_followings %>
         フォロワー：<%= @count_followers %>
-      </div>
+      </h4>
       <div>
         <%= simple_format(@user.introduction) %>
       </div>
       <div>
-        <%= @user.how_long %>
+        ギター歴：<%= @user.how_long %>
       </div>
       <div>
-        <%= @user.my_guiter_brand %>
+        使用しているギターブランド：<%= @user.my_guiter_brand %>
       </div>
       <div>
-        <%= @user.my_guiter_model %>
+        ギターモデル：<%= @user.my_guiter_model %>
       </div>
 
     </div>
