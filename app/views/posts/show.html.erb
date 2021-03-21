@@ -22,9 +22,17 @@
       <div class="card-body">
         <%= simple_format(@post.content) %>
         <% @post.image.each do |image|%>
-          <%= image_tag image.variant(resize: "500x500") %>
+          <%= image_tag @post.thumbnail(image) %>
         <% end %>
-        <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url[32..42] %>" width="560"></iframe>
+        <% if @post.youtube_url.present? %>
+          <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url[32..42] %>" width="560"></iframe>
+        <% end %>
+        
+        <br>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+          <%= link_to "この投稿を編集する", edit_post_path, class: 'btn btn-warning btn-sm' %>
+          <%= link_to 'この投稿を削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
       </div>
     </div>
 
@@ -40,7 +48,7 @@
           <% if c.user.avatar.attached? %>
             <div class="avatar"><%= image_tag(rails_blob_path(c.user.avatar),:size => "50x50") %></div>
           <% else %>
-            <div class="avatar"><%= image_tag("nonavatar.jpg", :size => "50x50") %></div>
+            <div class="avatar"><%= image_tag("nonavatar.png", :size => "50x50") %></div>
           <% end %>
         <%= link_to c.user.username, user_path(c.user.id) %>
         <small class="text-muted">posted at <%= c.created_at.strftime("%Y-%m-%d %H:%M") %></small>
@@ -66,25 +74,12 @@
   <% end %>
 </div>
 
-
-
-
-
 <br><br>
-<% if user_signed_in? && current_user.id == @post.user_id %>
-  <%= link_to "この投稿を編集する", edit_post_path %>
-  <%= link_to 'この投稿を削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-<% end %>
 
 
 <%= link_to "一覧に戻る", root_url %>
-
-
-    
     
   </div>
-
-  
 </div>
     
 

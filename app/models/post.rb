@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   has_many_attached :image
   
   def thumbnail input
-    return self.image[input].variant(resize: '300x300!').processed
+    return self.image[input].variant(resize: '300x300').processed
   end
   
   
