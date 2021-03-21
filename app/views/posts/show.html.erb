@@ -22,17 +22,19 @@
       <div class="card-body">
         <%= simple_format(@post.content) %>
         <% @post.image.each do |image|%>
-          <%= image_tag @post.thumbnail(image) %>
+          <%= image_tag image.variant(resize: "500x500") %>
         <% end %>
         <% if @post.youtube_url.present? %>
           <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url[32..42] %>" width="560"></iframe>
         <% end %>
         
         <br>
+        <p align="right">
         <% if user_signed_in? && current_user.id == @post.user_id %>
           <%= link_to "この投稿を編集する", edit_post_path, class: 'btn btn-warning btn-sm' %>
           <%= link_to 'この投稿を削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
         <% end %>
+        </p>
       </div>
     </div>
 
