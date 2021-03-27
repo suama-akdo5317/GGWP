@@ -18,21 +18,34 @@ http://ggwp-guitar.herokuapp.com/
 
 * AWS
     * cloud9
-    * EC2
     * S3
 
-* System dependencies
+* heroku
 
-* Configuration
+* sendgrid
 
-* Database creation
+# 機能一覧
 
-* Database initialization
+* ユーザ登録・ログイン機能 (devise)
+    * アバター登録(Active Storage + S3)
+    * フォロー機能
 
-* How to run the test suite
+* 投稿機能
+    * YoutubeのURLを自動変換し、埋め込み動画として表示
+    * 画像投稿機能(Active Storage + S3)
+    * コメント機能
+    * いいね機能
+    * ページネーション機能(kaminari)
 
-* Services (job queues, cache servers, search engines, etc.)
+# デモ
+  * 投稿機能
+  * コメント機能
+  * いいね機能
+  * フォロー機能
 
-* Deployment instructions
+# なぜ作ったか？
 
-* ...
+ギタリスト同士で情報共有を図ることで、挫折する人を減らし、技術の向上を図ってほしいため。
+ギターを新規で始める人の9割は1年以内に挫折してしまう、というデータがあるほど挫折率が高い。
+特に独学で仲間もいないとその割合が高くなる。
+取得した技術の備忘録やおすすめの動画の共有、ギタリスト同士の交流に活用してほしい。
