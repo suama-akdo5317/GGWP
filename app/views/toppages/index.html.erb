@@ -2,6 +2,7 @@
     <%= render 'posts/post', posts: @posts %>
 
   <% else %>
+    <%= render 'layouts/flash_messages' %>
     <div class="jumbotron jumbotron-extend">
       <div class="container-fluid jumbotron-container">
         <div class="row">
@@ -18,20 +19,10 @@
           </div>
             <div class="col-4">
               <%= render 'toppages/login' %>
-              
-              <br>
-              <%= render 'layouts/flash_messages' %>
             </div>
         </div>
       </div>
     </div>
   </div>
-  <h2 class="about">OUR SERVICE</h2>
-  <h3 class="about"><span>01</span>ログイン</h3>
-  <h3 class="about"><span>02</span>投稿・コメント</h3>
-  <h3 class="about"><span>03</span>フォロー</h3>
-  <h3 class="about"><span>04</span>お気に入り</h3>
   <% end %>
-
-
 </div>
