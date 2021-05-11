@@ -1,0 +1,37 @@
+version: '3'
+volumes:
+  tmp_data:
+  public_data:
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - public_data:/ggwp/public
+      - tmp_data:/ggwp/tmp/sockets
+    depends_on:
+      - app
+    links:
+      - app
+  app:
+    build:
+      context: ./
+      dockerfile: ./docker/rails/Dockerfile
+    command: bundle exec puma
+    volumes:
+     #.:/ggwpでプロジェクトのカレントフォルダとコンテナのフォルダを同期しています.これによって変更した箇所を再度ビルドすることなく、コンテナに反映することができます.
+      - .:/ggwp:cached
+      #nginxとsocket通信するためにホストコンピュータ上にtmp_dataというファイルを作成し、nginxコンテナと共有しています.
+      - tmp_data:/ggwp/tmp/sockets
+      - public_data:/ggwp/public
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
