@@ -16,9 +16,12 @@ test:
 
   
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: ggwp_production
-  username: ggwp
-  password: <%= ENV['GGWP_DATABASE_PASSWORD'] %>
+  <<: *default
+  database: <%= ENV['DB_DATABASE'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
