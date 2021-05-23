@@ -72,3 +72,5 @@ group :production do
 end
 
 gem 'dotenv-rails'
+
+gem 'mini_racer'
