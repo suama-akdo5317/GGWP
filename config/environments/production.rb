@@ -92,16 +92,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  config.action_mailer.default_url_options = { :host => 'ggwp-guitar.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'ggwp-guitar.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :enable_starttls_auto => true,
-  :address => "smtp.sendgrid.net",
-  :port => 587,
-  :domain => "herokuapp.com",
-  :authentication => :plain,
-  :user_name => ENV['SENDGRID_USERNAME'],
-  :password => ENV['SENDGRID_PASSWORD'],
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'gmail.com',
+    :user_name => Rails.application.credentials.gmail[:address],
+    :password => Rails.application.credentials.gmail[:password],
+    :authentication => :plain,
+    :enable_starttls_auto => true
 }
   
 end
