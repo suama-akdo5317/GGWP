@@ -39,7 +39,7 @@ Youtubeの動画などを紹介しあってモチベーションの維持にお�
 * Docker
 * Docker-compose
 
-<img width="628" alt="top画像" src="https://user-images.githubusercontent.com/74129169/120108999-94c91180-c1a2-11eb-8949-bf0450e0b4ab.png">
+<img width="628" alt="インフラ図" src="https://user-images.githubusercontent.com/74129169/121772911-79eb9980-cbb3-11eb-914d-8f2e0649347d.png">
 
 
 # 機能一覧
@@ -61,7 +61,7 @@ Youtubeの動画などを紹介しあってモチベーションの維持にお�
 
 # 今後実装予定の機能
 ### インフラ面
-* 常時SSL化 ※6/12実装
+* 常時SSL化 ※6/12実装しました
 * Circle CI/CD の活用
 * EC2、RDSの冗長化
 
